@@ -72,38 +72,12 @@ const values={
   ))
   return (
     <>
-<<<<<<< HEAD
-      <ul>
-        <li>
-          <NavLink to="/" style={({ isActive }) => (isActive ? { color: 'red' } : {})}>
-            {({ isActive }) => (isActive ? 'Home' : 'Home')}
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/products">Cart</NavLink>
-        </li>
-      </ul>
-      <HandleSearch products={products} setFilteredProducts={setFilteredProducts} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route
-          index
-          element={<Products products={filteredProducts} setShoppingCart={setShoppingCart} />}
-        />
-      </Routes>
-=======
 <ShopData.Provider value={values}>
 
 <RouterProvider router={router}/>
 </ShopData.Provider>
    
->>>>>>> main
     </>
   );
 }
-<<<<<<< HEAD
-
-export default App;
-=======
 export default App
->>>>>>> main
