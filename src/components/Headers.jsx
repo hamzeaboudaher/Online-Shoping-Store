@@ -1,33 +1,35 @@
-import { Link } from "react-router-dom";
-import "../App.css";
-import myImage from "../assets/react.svg";
+import { Link, NavLink } from "react-router-dom";
 
 function Headers() {
   return (
     <>
-      <nav style={{ display: "flex", padding: "20px" }}>
+      <nav>
         <ul>
-          <li style={{ padding: "20px" }}>
+          <li>
             {" "}
-            <Link to="/">Home</Link>
+            <NavLink
+              className={({ isActive }) =>
+                `${isActive ? "text-blue-900" : "text-blue-400"}`
+              }
+              to="/home"
+            >
+              Home
+            </NavLink>
           </li>
         </ul>
         <ul>
-          <li style={{ padding: "20px" }}>
+          <li>
             {" "}
             <Link to="/carts">Carts</Link>
           </li>
         </ul>
         <ul>
-          <li style={{ padding: "20px" }}>
+          <li>
             {" "}
             <Link to="/products">Products</Link>
           </li>
         </ul>
       </nav>
-      <div style={{ position: "relative" }}>
-        <img src={myImage} alt="Beschreibung" />
-      </div>
     </>
   );
 }
