@@ -26,20 +26,33 @@ const [state, dispatch]=useReducer(reducer, initState)
 
 function addToBasket  (product)  {
   const updateBasket =[...state.products, product]
-
+  updatePriceF(updateBasket)
   dispatch({ type: "AddToBasket", payload: updateBasket });
 }
 
 
 
+function removefromBasket(index)  {
+  const updateBasket =[...state.products]
+   updateBasket.splice(index, 1)
+updatePriceF(updateBasket)
+  dispatch({ type: "RemoveFromBasket", payload: updateBasket });
+}
 
-
-
+const updatePriceF=(updateBasket)=>{
+  
+  let totalPrice=updateBasket.reduce((acc, cu)=>{
+    return acc +cu.price
+  },0)
+  dispatch({type:"UpdatePrice", payload:totalPrice})
+}
 
 
 const values={
   data,
   addToBasket,
+  removefromBasket,
+  updatePriceF,
   products:state.products,
   totalPrice:state.totalPrice,
 

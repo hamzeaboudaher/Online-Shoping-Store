@@ -1,51 +1,62 @@
-
-import { Link, useParams } from 'react-router-dom';
-import { useContext, useState } from 'react';
-import ShopData from '../Context-Api-Reducer/Context';
+import { Link, useParams } from "react-router-dom";
+import { useContext, useState } from "react";
+import ShopData from "../Context-Api-Reducer/Context";
 
 function Products() {
   const { category } = useParams();
   const { data, addToBasket } = useContext(ShopData);
-  const [priceRange, setPriceRange] = useState('');
+  const [priceRange, setPriceRange] = useState("");
 
+  {/* Price und Category filter */}
   const filteredData = data
-  .filter((item) => !category || item.category === category)
-  .filter((item) => {
-    if (!priceRange) return true; // No price range specified
+    .filter((item) => !category || item.category === category)
+    .filter((item) => {
+      if (!priceRange) return true; // No price range specified
 
-    const [min, max] = priceRange.split('-').map(parseFloat);
-    return (!min || item.price >= min) && (!max || item.price <= max);
-  });
-    const uniqueCategories = [...new Set(filteredData.map((item) => item.category))];
-    return (
+      const [min, max] = priceRange.split("-").map(parseFloat);
+      return (!min || item.price >= min) && (!max || item.price <= max);
+    });
+
+
+
+
+  const uniqueCategories = [
+    ...new Set(filteredData.map((item) => item.category)),
+  ];
+
+
+
+  return (
     <>
-     <div className="border-black border-hidden border-2 text-red-500 text-xl   ">
+      <div className="border-black border-hidden border-2 text-red-500 text-xl   ">
         <nav>
-        {uniqueCategories.map((uniqueCategory) => (
-          
-  <Link 
-    key={uniqueCategory.id}
-    className={`text-red mr-5 hover:bg-orange-200 ${category === uniqueCategory ? 'font-bold' : ''}`}
-    to={`/products/${uniqueCategory}`}
-  >
-  
-    {uniqueCategory}
-  </Link>
- 
-))}
-
+          {uniqueCategories.map((uniqueCategory) => (
+            <Link
+              key={uniqueCategory.id}
+              className={`text-red mr-5 hover:bg-orange-200 ${
+                category === uniqueCategory ? "font-bold" : ""
+              }`}
+              to={`/products/${uniqueCategory}`}
+            >
+              {uniqueCategory}
+            </Link>
+          ))}
         </nav>
       </div>
-      <div>
-          <label htmlFor="priceRange">Price Range:</label>
-          <input
-            type="text"
-            id="priceRange"
-            placeholder="min-max"
-            value={priceRange}
-            onChange={(e) => setPriceRange(e.target.value)}
-          />
-        </div>
+
+
+              {/* Price filter */}
+      <div className="mt-5 text-red-500 text-xl">
+        <label htmlFor="priceRange">Price Range:</label>
+        <input
+          type="text"
+          id="priceRange"
+          placeholder="min-max"
+          value={priceRange}
+          onChange={(e) => setPriceRange(e.target.value)}
+        />
+      </div>
+
 
 
 

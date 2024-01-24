@@ -3,13 +3,15 @@ import ShopData from "../Context-Api-Reducer/Context"
 
 
 function Carts() {
-const { products }=useContext(ShopData)
+const { products, removefromBasket,totalPrice }=useContext(ShopData)
 
   return (
    <>
-
- {products.map((item) => (
+  <h3>{totalPrice}</h3>
+ {products.map((item ) => (
   <li key={item.id}>
+  <button onClick={()=>{removefromBasket(item)}}>X</button>
+  <h2>{item.price}</h2>
     <h1>{item.title}</h1>
     <img
       src={item.image}
