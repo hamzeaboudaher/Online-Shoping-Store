@@ -12,33 +12,41 @@ import Home from "./components/Home";
 import { initState, reducer } from "./Context-Api-Reducer/Usereducer";
 import ShopData from "./Context-Api-Reducer/Context";
 import { useEffect, useReducer, useState } from "react";
+import Headers from "./components/Headers";
+import Slider from "./Slider";
+import Page from "./components/Page";
 
 function App() {
   const [data, setData] = useState([]);
+  const [state, dispatch] = useReducer(reducer, initState);
+
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((respond) => respond.json())
       .then((dat) => setData(dat))
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
-  const [state, dispatch] = useReducer(reducer, initState);
+
   function addToBasket(product) {
     const updateBasket = [...state.products, product];
     updatePriceF(updateBasket);
     dispatch({ type: "AddToBasket", payload: updateBasket });
   }
+
   function removefromBasket(index) {
     const updateBasket = [...state.products];
     updateBasket.splice(index, 1);
     updatePriceF(updateBasket);
     dispatch({ type: "RemoveFromBasket", payload: updateBasket });
   }
+
   const updatePriceF = (updateBasket) => {
     let totalPrice = updateBasket.reduce((acc, cu) => {
       return acc + cu.price;
     }, 0);
     dispatch({ type: "UpdatePrice", payload: totalPrice });
   };
+
   const values = {
     data,
     addToBasket,
@@ -47,15 +55,21 @@ function App() {
     products: state.products,
     totalPrice: state.totalPrice,
   };
+
+  // Routing-Logik
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Layout />}>
+        <Route path="page" element={<Headers />} />
+        <Route path="slider" element={<Slider />} />
+        <Route path="page" element={<Page />} />
         <Route path="/home" element={<Home />} />
         <Route path="/carts" element={<Carts />} />
         <Route path="/products/:category?" element={<Products />} />
       </Route>
     )
   );
+
   return (
     <>
       <ShopData.Provider value={values}>

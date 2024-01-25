@@ -10,6 +10,7 @@ function Products() {
   {
     /* Price und Category filter */
   }
+
   const filteredData = data
     .filter((item) => !category || item.category === category)
     .filter((item) => {
@@ -17,9 +18,11 @@ function Products() {
       const [min, max] = priceRange.split("-").map(parseFloat);
       return (!min || item.price >= min) && (!max || item.price <= max);
     });
+
   const uniqueCategories = [
     ...new Set(filteredData.map((item) => item.category)),
   ];
+
   return (
     <>
       <div className="border-black border-hidden border-2 text-red-500 text-xl   ">
@@ -37,6 +40,7 @@ function Products() {
           ))}
         </nav>
       </div>
+
       {/* Price filter */}
       <div className="mt-5 text-red-500 text-xl">
         <label htmlFor="priceRange">Price Range:</label>
@@ -48,6 +52,7 @@ function Products() {
           onChange={(e) => setPriceRange(e.target.value)}
         />
       </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">
         {filteredData.map((item) => (
           <div

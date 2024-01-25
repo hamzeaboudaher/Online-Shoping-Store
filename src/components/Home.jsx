@@ -1,12 +1,16 @@
+import CarouselImage from "../Login/Carousel";
+import Login from "../Login/Login";
+import { PricingCard } from "../Login/PricingCard";
+// import CheckIcon from "../Login/PricingCard";
 
-
-function Home() {
-
+export default function Home() {
   return (
-   <>
-  
-   </>
-  )
-}
+    <>
+      <CarouselImage />
+      <Login />
 
-export default Home
+      <PricingCard />
+      {/* <CheckIcon /> */}
+    </>
+  );
+}
