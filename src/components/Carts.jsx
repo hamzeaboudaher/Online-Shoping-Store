@@ -48,5 +48,4 @@ const { products,dispatch, removefromBasket,totalPrice,  }=useContext(ShopData)
    </>
   )
 }
-
-export default Carts
+export default Carts;
