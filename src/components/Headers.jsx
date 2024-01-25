@@ -61,7 +61,10 @@ function Headers() {
               </NavLink>
             </li>
           </ul>
-          <ul>
+       
+        </nav>
+      </div>
+      <ul>
             <li>
               <NavLink
                 className={({ isActive }) =>
@@ -73,8 +76,6 @@ function Headers() {
                         </NavLink>
             </li>
           </ul>
-        </nav>
-      </div>
     </>
   );
 }
