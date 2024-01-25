@@ -31,7 +31,7 @@ export function PricingCard() {
     <Card
       style={{
         color: "pink",
-        backgroundColor: "lightcoral",
+        backgroundColor: "lightblue",
         marginTop: "200px",
       }}
       color="black"

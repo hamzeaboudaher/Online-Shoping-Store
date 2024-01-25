@@ -79,7 +79,7 @@ export default function Login() {
           style={{
             marginTop: "100px",
             padding: "10px",
-            backgroundColor: "lightcoral",
+            backgroundColor: "lightblue",
           }}
         >
           <input
