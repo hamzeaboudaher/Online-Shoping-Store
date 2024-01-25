@@ -1,7 +1,7 @@
 export const initState = {
   totalPrice: 0,
   products: [],
-  quantity:0
+ 
 };
 
 export const reducer=((state,action)=>{
@@ -21,7 +21,7 @@ export const reducer=((state,action)=>{
         case "Quantity":
           return{
             ...state,
-            quantity: action.payload +1
+            products: state.products.filter((c)=>c.id===action.payload.id ? (c.qty=action.payload.qty ) : c.qty)
           }
         default:
           throw new Error(`Unknown Problem.`);

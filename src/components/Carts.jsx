@@ -3,11 +3,11 @@ import ShopData from "../Context-Api-Reducer/Context"
 
 
 function Carts() {
-const { products, removefromBasket,totalPrice, quantity,increaseCartQuantity }=useContext(ShopData)
+const { products,dispatch, removefromBasket,totalPrice,  }=useContext(ShopData)
 
   return (
    <>
-  <h3>Total Price: <span className="text-red-800">{totalPrice} €€</span></h3>
+  <h3>Total Price: <span className="text-red-800">{totalPrice } €€</span></h3>
 
 
 
@@ -26,9 +26,8 @@ const { products, removefromBasket,totalPrice, quantity,increaseCartQuantity }=u
     <li>
     <h1>{item.title}</h1>
 
-                <button onClick={() => increaseCartQuantity(item)}>+</button>
-
-                <span>{quantity}</span>
+    <input type="number" id="quantity" name="quantity"  value={item.qty} onChange={(e) => dispatch({ type: "Quantity", payload: {id:item.id, qty:e.target.value} })}></input>
+          
      
     </li>
   </ul>
