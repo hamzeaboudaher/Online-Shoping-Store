@@ -2,15 +2,27 @@
 import { Link, useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import ShopData from '../Context-Api-Reducer/Context';
+import { getCartTotalPrice } from '../Context-Api-Reducer/Usereducer';
 
 function Products() {
   const { category } = useParams();
-  const { data, addToBasket } = useContext(ShopData);
+  const { data, addToBasket , dispatch , products} = useContext(ShopData);
 
   // Filter products based on the category
   const filteredData = category
     ? data.filter((item) => item.category === category)
     : data;
+
+    const handleAddToBasket = (product) => {
+      addToBasket(product);
+    };
+
+    const handleRemoveFromBasket = (productId) => {
+      dispatch({ type: 'RemoveFromBasket', payload: productId });
+    };
+
+    const cartTotalPrice = getCartTotalPrice(products);
+
 
   return (
     <>
@@ -42,13 +54,26 @@ function Products() {
               <span className="text-green-500 font-bold">${item.price}</span>
               <button
                 className="ml-2 bg-blue-500 text-white px-3 py-1 rounded-md"
-                onClick={() => addToBasket(item)}
+                onClick={() => handleAddToBasket(item)}
               >
-                Add to Cart
+                Add to Cart (+)
               </button>
+
+              <button
+                className="ml-2 bg-red-500 text-white px-3 py-1 rounded-md"
+                onClick={() => handleRemoveFromBasket(item.id)}
+              >
+                Remove from Cart (-)
+              </button>
+
+              
             </div>
           </div>
         ))}
+      </div>
+
+      <div>
+        <h2>Gesamtpreis im Warenkorb: ${cartTotalPrice.toFixed(2)}</h2>
       </div>
     </>
   );
