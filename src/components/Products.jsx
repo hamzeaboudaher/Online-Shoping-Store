@@ -32,7 +32,7 @@ function Products() {
         <nav>
           {uniqueCategories.map((uniqueCategory) => (
             <Link
-              key={uniqueCategory.id}
+              key={uniqueCategory}
               className={`text-red mr-5 hover:bg-orange-200 ${
                 category === uniqueCategory ? "font-bold" : ""
               }`}

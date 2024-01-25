@@ -46,6 +46,15 @@ const updatePriceF=(updateBasket)=>{
   },0)
   dispatch({type:"UpdatePrice", payload:totalPrice})
 }
+const increaseCartQuantity = (id , updateBasket) => {
+  
+  const updatedProducts = state.products.map((product) =>
+    product.id === id ? { ...state.products, quantity: product.quantity + 1 } : product
+  );
+
+  dispatch({ type: "Quantity", payload: updatedProducts });
+  updatePriceF(updateBasket)
+};
 
 
 const values={
@@ -53,12 +62,15 @@ const values={
   addToBasket,
   removefromBasket,
   updatePriceF,
+  increaseCartQuantity,
+  quantity:state.quantity,
   products:state.products,
   totalPrice:state.totalPrice,
 
 }
 
   const router=createBrowserRouter(createRoutesFromElements(
+    
     <Route path='/' element={<Layout/>}>
     <Route path='/home' element={<Home/>}/>
     <Route path='/carts' element={<Carts/>}/>
@@ -67,6 +79,7 @@ const values={
   ))
   return (
     <>
+    
 <ShopData.Provider value={values}>
 
 <RouterProvider router={router}/>

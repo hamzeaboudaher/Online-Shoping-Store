@@ -1,6 +1,7 @@
 export const initState = {
   totalPrice: 0,
   products: [],
+  quantity:0
 };
 
 export const reducer=((state,action)=>{
@@ -17,6 +18,11 @@ export const reducer=((state,action)=>{
         return{
           ...state, totalPrice: action.payload
         }
+        case "Quantity":
+          return{
+            ...state,
+            quantity: action.payload +1
+          }
         default:
           throw new Error(`Unknown Problem.`);
   }

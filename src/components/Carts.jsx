@@ -3,22 +3,44 @@ import ShopData from "../Context-Api-Reducer/Context"
 
 
 function Carts() {
-const { products, removefromBasket,totalPrice }=useContext(ShopData)
+const { products, removefromBasket,totalPrice, quantity,increaseCartQuantity }=useContext(ShopData)
 
   return (
    <>
-  <h3>{totalPrice}</h3>
- {products.map((item ) => (
-  <li key={item.id}>
-  <button onClick={()=>{removefromBasket(item)}}>X</button>
-  <h2>{item.price}</h2>
-    <h1>{item.title}</h1>
-    <img
+  <h3>Total Price: <span className="text-red-800">{totalPrice} €€</span></h3>
+
+
+
+  {products.map((item ) => (
+  <div key={item.id} className=" border-solid border-2 w-96 flex flex-row justify-center h-36 gap-4 mt-8 relative left-1/3">  
+ 
+
+  <div>  <img 
       src={item.image}
       alt={item.title}
-      className="w-full h-32 object-cover mb-4 rounded-md"
-    />
-  </li>
+      className="border-hidden border-2 h-32 object-cover mb-4 rounded-md mt-2"
+    /></div>
+    
+    <div className="border-hidden border-2 list-none">
+  <ul>
+    <li>
+    <h1>{item.title}</h1>
+
+                <button onClick={() => increaseCartQuantity(item)}>+</button>
+
+                <span>{quantity}</span>
+     
+    </li>
+  </ul>
+</div>
+
+    
+    <div className="border-hidden border-2">  <button  onClick={()=>{removefromBasket(item)}}>X</button>
+</div>
+ 
+  
+  </div>
+
 ))} 
 
         
