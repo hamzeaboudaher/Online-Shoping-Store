@@ -18,8 +18,8 @@ function App() {
       .then((dat) => setData(dat)).catch ((error)=> console.error("Error fetching data:", error));
    
   }, []);
-
-
+data.quantity = 2
+console.log(data.quantity)
 
 
 
@@ -28,7 +28,8 @@ const [state, dispatch]=useReducer(reducer, initState)
 function addToBasket  (product)  {
   const updateBasket =[...state.products, product]
   updatePriceF(updateBasket)
-  dispatch({ type: "AddToBasket", payload: updateBasket });
+  dispatch({ type: "AddToBasket", payload: updateBasket, qty: 1});
+  
 }
 
 
@@ -47,15 +48,11 @@ const updatePriceF=(updateBasket)=>{
   },0)
   dispatch({type:"UpdatePrice", payload:totalPrice})
 }
-const increaseCartQuantity = (id , updateBasket) => {
-  
-  const updatedProducts = state.products.map((product) =>
-    product.id === id ? { ...state.products, quantity: product.quantity + 1 } : product
-  );
 
-  dispatch({ type: "Quantity", payload: updatedProducts });
-  updatePriceF(updateBasket)
-};
+
+
+
+
 
 
 const values={
@@ -63,8 +60,8 @@ const values={
   addToBasket,
   removefromBasket,
   updatePriceF,
-  increaseCartQuantity,
-  quantity:state.quantity,
+  dispatch,
+
   products:state.products,
   totalPrice:state.totalPrice,
 
