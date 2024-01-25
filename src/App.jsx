@@ -7,6 +7,7 @@ import Home from './components/Home'
 import { initState, reducer } from './Context-Api-Reducer/Usereducer'
 import { useEffect, useReducer, useState } from 'react'
 import ShopData from './Context-Api-Reducer/Context'
+import Login from './Login/Login'
 
 function App() {
 
@@ -73,6 +74,7 @@ const values={
     <Route path='/home' element={<Home/>}/>
     <Route path='/carts' element={<Carts/>}/>
     <Route path='/products/:category?' element={<Products/>}/>
+    <Route path='/login' element={<Login/>}/>
     </Route>
   ))
   return (

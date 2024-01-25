@@ -61,6 +61,18 @@ function Headers() {
               </NavLink>
             </li>
           </ul>
+          <ul>
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  `${isActive ? "text-blue-900" : "text-blue-400"}`
+                }
+                to="/login"
+              >
+              Login    
+                        </NavLink>
+            </li>
+          </ul>
         </nav>
       </div>
     </>
