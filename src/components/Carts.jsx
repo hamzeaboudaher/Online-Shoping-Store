@@ -12,12 +12,7 @@ const Carts = () => {
   };
 
   const handleRemoveFromBasket = (product) => {
-    // Check if the quantity is already 1, if so, remove the product
-    if (product.quantity === 0) {
-      removefromBasket(product);
-    } else {
-      updateQuantity(product, product.quantity + 1);
-    }
+    removefromBasket(product);
     updatePriceF(); // Update total price when removing a product
   };
 
