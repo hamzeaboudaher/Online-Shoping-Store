@@ -1,4 +1,3 @@
-import React from "react";
 import { Carousel, IconButton } from "@material-tailwind/react";
 import { useContext } from "react";
 import ShopData from "../Context-Api-Reducer/Context";
