@@ -19,8 +19,6 @@ function App() {
       .then((dat) => setData(dat)).catch ((error)=> console.error("Error fetching data:", error));
    
   }, []);
-data.quantity = 2
-console.log(data.quantity)
 
 
 
