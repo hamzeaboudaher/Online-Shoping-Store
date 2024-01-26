@@ -86,7 +86,7 @@ const values={
     <Route path='/' element={<Layout/>}>
     <Route path='/home' element={<Home/>}/>
     <Route path='/carts' element={<Carts/>}/>
-    <Route path='/products/:category?' element={<Products/>}/>
+    <Route path='/products/:categoryid?' element={<Products/>}/>
     <Route path='/login' element={<Login/>}/>
     </Route>
   ))
