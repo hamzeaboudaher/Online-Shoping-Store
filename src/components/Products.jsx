@@ -1,8 +1,34 @@
 import { Link, useParams } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import ShopData from "../Context-Api-Reducer/Context";
 
 function Products() {
+
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    let conRef=containerRef.current
+    if (conRef) {
+      containerRef.current.style.position = "absolute";
+      containerRef.current.style.top = "0";
+      containerRef.current.addEventListener("click", scrollToTop);
+    }
+
+    return () => {
+      if (conRef) {
+        conRef.removeEventListener("click", scrollToTop);
+      }
+    };
+  }, [containerRef]);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  
   const { categoryid } = useParams();
   const { data, addToBasket } = useContext(ShopData);
   const [priceRange, setPriceRange] = useState("");
@@ -87,7 +113,9 @@ function Products() {
           </div>
         ))}
       </div>
-    </>
+      <button onClick={scrollToTop} className="text-red-700 fixed bottom-32 left-14 z-50">
+        scrollToTop
+      </button>    </>
   );
 }
 
