@@ -3,13 +3,13 @@ import { useContext, useState } from "react";
 import ShopData from "../Context-Api-Reducer/Context";
 
 function Products() {
-  const { category } = useParams();
+  const { categoryid } = useParams();
   const { data, addToBasket } = useContext(ShopData);
   const [priceRange, setPriceRange] = useState("");
 
   {/* Price und Category filter */}
   const filteredData = data
-    .filter((item) => !category || item.category === category)
+    .filter((item) => !categoryid || item.category === categoryid)
     .filter((item) => {
       if (!priceRange) return true; // No price range specified
 
@@ -34,7 +34,7 @@ function Products() {
             <Link
               key={uniqueCategory}
               className={`text-red mr-5 hover:bg-orange-200 ${
-                category === uniqueCategory ? "font-bold" : ""
+                categoryid === uniqueCategory ? "font-bold" : ""
               }`}
               to={`/products/${uniqueCategory}`}
             >

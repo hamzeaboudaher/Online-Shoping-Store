@@ -23,7 +23,6 @@ function App() {
 
 
 const [state, dispatch]=useReducer(reducer, initState)
-
 const addToBasket = (product) => {
   const existingProductIndex = state.products.findIndex((p) => p.id === product.id);
 
@@ -58,7 +57,7 @@ updatePriceF(updateBasket)
 
 const updatePriceF = (updateBasket) => {
   let totalPrice = updateBasket.reduce((acc, cu) => {
-    return acc + cu.price * cu.quantity; // Multiply price by quantity
+    return acc + cu.price * cu.quantity; 
   }, 0);
   dispatch({ type: "UpdatePrice", payload: totalPrice });
 };
@@ -87,7 +86,7 @@ const values={
     <Route path='/' element={<Layout/>}>
     <Route path='/home' element={<Home/>}/>
     <Route path='/carts' element={<Carts/>}/>
-    <Route path='/products/:category?' element={<Products/>}/>
+    <Route path='/products/:categoryid?' element={<Products/>}/>
     <Route path='/login' element={<Login/>}/>
     </Route>
   ))
