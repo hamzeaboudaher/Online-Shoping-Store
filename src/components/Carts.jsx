@@ -1,51 +1,78 @@
-import { useContext } from "react"
-import ShopData from "../Context-Api-Reducer/Context"
 
 
-function Carts() {
-const { products,dispatch, removefromBasket,totalPrice,  }=useContext(ShopData)
+import  { useContext } from 'react';
+import ShopData from '../Context-Api-Reducer/Context';
+
+const Carts = () => {
+  const { products, removefromBasket, updateQuantity, updatePriceF,totalPrice } = useContext(ShopData);
+
+  const handleAddToBasket = (product) => {
+    updateQuantity(product, product.quantity + 1);
+    updatePriceF(); // Update total price when quantity changes
+  };
+
+  const handleRemoveFromBasket = (product) => {
+    // Check if the quantity is already 1, if so, remove the product
+    if (product.quantity === 0) {
+      removefromBasket(product);
+    } else {
+      updateQuantity(product, product.quantity + 1);
+    }
+    updatePriceF(); // Update total price when removing a product
+  };
 
   return (
-   <>
-  <h3>Total Price: <span className="text-red-800">{totalPrice } €€</span></h3>
+  <><div className="container mx-auto mt-8">
+  <h2 className="text-2xl font-bold mb-4">Shopping Cart</h2>
+  <h1 className="text-3xl font-bold mb-6">${totalPrice}</h1>
 
-
-
-  {products.map((item ) => (
-  <div key={item.id} className=" border-solid border-2 w-96 flex flex-row justify-center h-36 gap-4 mt-8 relative left-1/3">  
- 
-
-  <div>  <img 
-      src={item.image}
-      alt={item.title}
-      className="border-hidden border-2 h-32 object-cover mb-4 rounded-md mt-2"
-    /></div>
-    
-    <div className="border-hidden border-2 list-none">
-  <ul>
-    <li>
-    <h1>{item.title}</h1>
-
-    <input type="number" id="quantity" name="quantity"  value={item.qty} onChange={(e) => dispatch({ type: "Quantity", payload: {id:item.id, qty:e.target.value} })}></input>
-          
-     
-    </li>
-  </ul>
+  {products.length === 0 ? (
+    <p>Your cart is empty.</p>
+  ) : (
+    <table className="min-w-full divide-y divide-gray-200">
+      <thead className="bg-gray-100">
+        <tr>
+          <th className="py-2 px-4">Product</th>
+          <th className="py-2 px-4">Price</th>
+          <th className="py-2 px-4">Quantity</th>
+          <th className="py-2 px-4">Actions</th>
+        </tr>
+      </thead>
+      <tbody className="divide-y divide-gray-200">
+        {products.map((product, index) => (
+          <tr key={index}>
+            <td className="py-2 px-4">{product.title}</td>
+            <td className="py-2 px-4">${product.price}</td>
+            <td className="py-2 px-4">{product.quantity}</td>
+            <td className="py-2 px-4">
+              <button
+                className="bg-blue-500 text-white py-1 px-2 rounded mr-2"
+                onClick={() => updateQuantity(product, product.quantity - 1)}
+                disabled={product.quantity <= 0}
+              >
+                -
+              </button>
+              <button
+                className="bg-green-500 text-white py-1 px-2 rounded mr-2"
+                onClick={() => handleAddToBasket(product)}
+              >
+                +
+              </button>
+              <button
+                className="bg-red-500 text-white py-1 px-2 rounded"
+                onClick={() => handleRemoveFromBasket(index)}
+              >
+                Remove
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  )}
 </div>
+</>
+  );
+};
 
-    
-    <div className="border-hidden border-2">  <button  onClick={()=>{removefromBasket(item)}}>X</button>
-</div>
- 
-  
-  </div>
-
-))} 
-
-        
-
-
-   </>
-  )
-}
 export default Carts;

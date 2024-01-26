@@ -26,12 +26,28 @@ console.log(data.quantity)
 
 const [state, dispatch]=useReducer(reducer, initState)
 
-function addToBasket  (product)  {
-  const updateBasket =[...state.products, product]
-  updatePriceF(updateBasket)
-  dispatch({ type: "AddToBasket", payload: updateBasket, qty: 1});
-  
-}
+const addToBasket = (product) => {
+  const existingProductIndex = state.products.findIndex((p) => p.id === product.id);
+
+  if (existingProductIndex !== -1) {
+    const updatedProducts = [...state.products];
+    updatedProducts[existingProductIndex].quantity += 1;
+    updatePriceF(updatedProducts);
+    dispatch({ type: "UpdateQuantity", payload: { id: product.id, quantity: updatedProducts[existingProductIndex].quantity } });
+  } else {
+    dispatch({ type: "AddToBasket", payload: { ...product, quantity: 1 } });
+    updatePriceF([...state.products, { ...product, quantity: 1 }]);
+  }
+};
+
+
+const updateQuantity = (product, newQuantity) => {
+  const updatedProducts = state.products.map((p) =>
+    p.id === product.id ? { ...p, quantity: newQuantity } : p
+  );
+  updatePriceF(updatedProducts);
+  dispatch({ type: "UpdateQuantity", payload: { id: product.id, quantity: newQuantity } });
+};
 
 
 
@@ -42,13 +58,12 @@ updatePriceF(updateBasket)
   dispatch({ type: "RemoveFromBasket", payload: updateBasket });
 }
 
-const updatePriceF=(updateBasket)=>{
-  
-  let totalPrice=updateBasket.reduce((acc, cu)=>{
-    return acc +cu.price
-  },0)
-  dispatch({type:"UpdatePrice", payload:totalPrice})
-}
+const updatePriceF = (updateBasket) => {
+  let totalPrice = updateBasket.reduce((acc, cu) => {
+    return acc + cu.price * cu.quantity; // Multiply price by quantity
+  }, 0);
+  dispatch({ type: "UpdatePrice", payload: totalPrice });
+};
 
 
 
@@ -59,9 +74,10 @@ const updatePriceF=(updateBasket)=>{
 const values={
   data,
   addToBasket,
+  updateQuantity,
   removefromBasket,
   updatePriceF,
-  dispatch,
+ 
 
   products:state.products,
   totalPrice:state.totalPrice,
