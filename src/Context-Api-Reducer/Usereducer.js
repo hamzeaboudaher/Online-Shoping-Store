@@ -1,3 +1,4 @@
+
 export const initState = {
   totalPrice: 0,
   products: [],
@@ -32,4 +33,4 @@ export const reducer = (state, action) => {
     default:
       throw new Error(`Unknown Problem.`);
   }
-};
+}

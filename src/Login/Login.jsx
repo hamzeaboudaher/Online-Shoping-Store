@@ -4,7 +4,6 @@ export default function Login() {
   const [data, setData] = useState({
     userName: "",
     password: "",
-    value: "",
   });
 
   const handleInputChange = (e) => {
@@ -18,49 +17,46 @@ export default function Login() {
   // };
 
   return (
-    <>
-      <div
-        style={{
-          marginTop: "200px",
-          width: "400px",
-          height: "400px",
-          border: "2px solid grey",
-        }}
-      >
-        <h1>Login</h1>
+    <div className=" h-screen flex items-center justify-center">
+      <div className="bg-white p-8 rounded shadow-md w-96">
+        <h2 className="text-2xl font-bold mb-4">Login</h2>
 
-        <form
-          style={{
-            marginTop: "100px",
-            padding: "10px",
-            backgroundColor: "lightblue",
-          }}
-        >
+        {/* Username Input */}
+        <div className="mb-4">
+          <label htmlFor="username" className="block text-gray-600 text-sm font-medium mb-2">
+            Username
+          </label>
           <input
-            style={{ border: "2px solid grey", padding: "10px" }}
             type="text"
-            name="userName"
-            placeholder="Username"
+            id="username"
+            name="username"
+            value=""
+            className="w-full px-3 py-2 border rounded focus:outline-none focus:border-blue-500"
           />
-          <br />
+        </div>
+
+        {/* Password Input */}
+        <div className="mb-6">
+          <label htmlFor="password" className="block text-gray-600 text-sm font-medium mb-2">
+            Password
+          </label>
           <input
-            style={{ border: "2px solid grey", padding: "10px" }}
             type="password"
+            id="password"
             name="password"
-            placeholder="Password"
+            className="w-full px-3 py-2 border rounded focus:outline-none focus:border-blue-500"
           />
-          <input
-            style={{
-              border: "2px solid grey",
-              padding: "10px",
-              margin: "10px",
-              cursor: "pointer",
-            }}
-            type="submit"
-            value="Submit"
-          />
-        </form>
+        </div>
+
+        {/* Login Button */}
+        <button
+          className="w-full bg-blue-500 text-white p-3 rounded focus:outline-none hover:bg-blue-600"
+        >
+          Login
+        </button>
       </div>
-    </>
+    </div>
   );
-}
+};
+
+export default Login;

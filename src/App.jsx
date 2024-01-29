@@ -31,6 +31,11 @@ function App() {
       (p) => p.id === product.id
     );
 
+
+const [state, dispatch]=useReducer(reducer, initState)
+const addToBasket = (product) => {
+  const existingProductIndex = state.products.findIndex((p) => p.id === product.id);
+
     if (existingProductIndex !== -1) {
       const updatedProducts = [...state.products];
       updatedProducts[existingProductIndex].quantity += 1;

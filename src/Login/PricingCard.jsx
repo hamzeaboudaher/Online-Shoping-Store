@@ -32,7 +32,7 @@ export function PricingCard() {
       style={{
         color: "grey",
         backgroundColor: "#1e293b",
-        marginTop: "200px",
+        marginTop: "100px",
       }}
       color="black"
       variant="gradient"

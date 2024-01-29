@@ -12,15 +12,18 @@ function Footer() {
     <footer className="main-container" >
          
 
-    <div >
+    
 
-    <div className="social-icons">
+   
+
+    <div className="footer-bottom">
+    {/* <div className="social-icons">
   <a href="https://github.com/hamzeaboudaher/Online-Shoping-Store"><i className="fab fa-facebook"></i></a>
   <a href=""><i className="fab fa-twitter"></i></a>
   <a href=""><i className="fab fa-instagram"></i></a>
   <a href="https://github.com/hamzeaboudaher/Online-Shoping-Store"><i className="fab fa-youtube"></i></a>
   <a href=""><i className="fab fa-google-plus"></i></a>
-</div>
+</div> */}
 
 
 
@@ -32,12 +35,11 @@ function Footer() {
           <li><a href="">Contect us</a></li>
           <li><a href="">Our Team</a></li>
         </ul>
+              <p className='copyRight'>Copyright &copy; 2024 ; Designed by <span className="designer">Atef , Katharina & Hamze</span></p>
+
       </div>
     </div>
-
-    <div className="footer-bottom">
-      <p>Copyright &copy;2024; Designed by <span className="designer">Atef , Katharina and Hamze</span></p>
-    </div>
+    
 
   </footer>
 
