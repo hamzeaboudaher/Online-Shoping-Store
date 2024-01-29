@@ -56,20 +56,19 @@ function Products() {
 
   return (
     <>
-      <div className="border-black border-hidden border-2 text-red-500 text-xl   ">
-        <nav>
+      <div className="border-black border-hidden border-2 text-red-500 text-l   ">
+       
           {uniqueCategories.map((uniqueCategory) => (
             <Link
               key={uniqueCategory}
-              className={`text-red mr-5 hover:bg-orange-200 ${
-                categoryid === uniqueCategory ? "font-bold" : ""
+              className={`mr-5 text-black font-bold hover:text-blue-700  
               }`}
               to={`/products/${uniqueCategory}`}
             >
               {uniqueCategory}
             </Link>
           ))}
-        </nav>
+     
       </div>
 
 
