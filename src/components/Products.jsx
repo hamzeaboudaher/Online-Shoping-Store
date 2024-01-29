@@ -1,6 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
 import ShopData from "../Context-Api-Reducer/Context";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 function Products() {
 
@@ -114,7 +116,7 @@ function Products() {
         ))}
       </div>
       <button onClick={scrollToTop} className="text-red-700 fixed bottom-32 left-14 z-50">
-        scrollToTop
+      <FontAwesomeIcon icon={faArrowUp} />
       </button>    </>
   );
 }
