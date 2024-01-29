@@ -1,6 +1,7 @@
 import { Carousel, IconButton } from "@material-tailwind/react";
 import { useContext } from "react";
 import ShopData from "../Context-Api-Reducer/Context";
+import "../App.css";
 
 export default function CarouselImage() {
   const { data } = useContext(ShopData);
@@ -8,15 +9,28 @@ export default function CarouselImage() {
 
   return (
     <>
-      <h1 className="text-center text-4xl font-bold mt-20">
-        Welcome to OnlineShop
-      </h1>
+      <div className=" mt-20 shadow-lg">
+        <h1 className="text-center text-6xl ">Welcome to OnlineShop</h1>
+        <p style={{ marginTop: "50px" }}>
+          Du findest hier alles für Deinen stimmigen Look. Auf eine große
+          Auswahl an Größen und Farben musst Du dabei nicht verzichten.
+          Besonders farbenfrohe Modelle machen Lust auf Sommer. Mit den dezenten
+          Oberteilen machst Du eine gute Figur in Herbst und Winter. Damit Du in
+          der kalten Jahreszeit nicht frierst, kannst Du gleich die passende
+          Jacke mitbestellen. Innovative Features wie ein herausknöpfbares
+          Innenfutter, dicke Kapuzen oder eine extra taillierte Passform machen
+          die Jacken und Mäntel zu einem absoluten Must-Have für Deinen
+          Kleiderschrank.
+        </p>
+      </div>
+
       <Carousel
         style={{
           marginTop: "200px",
           border: "2 px solid grey",
         }}
         className="rounded-xl"
+        // speed={6000}
         prevArrow={({ handlePrev }) => (
           <IconButton
             variant="text"

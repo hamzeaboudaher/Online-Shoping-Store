@@ -4,6 +4,7 @@ export default function Login() {
   const [data, setData] = useState({
     userName: "",
     password: "",
+    value: "",
   });
 
   const handleInputChange = (e) => {
