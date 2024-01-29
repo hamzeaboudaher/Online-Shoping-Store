@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import image from "../assets/OLS.svg";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 function Headers() {
   return (
     <>
@@ -45,21 +46,22 @@ function Headers() {
                 }
                 to="/products"
               >
-                products
+                Products
               </NavLink>
             </li>
           </ul>
+   
         </nav>
       </div>
       <ul>
         <li>
           <NavLink
             className={({ isActive }) =>
-              `${isActive ? "text-blue-900" : "text-blue-400"}`
+              `${isActive ? "text-blue-900" : "text-blue-400"} absolute top-8 right-56`
             }
             to="/login"
           >
-            Login
+           <FontAwesomeIcon icon={faUser} size="xl" style={{"--fa-primary-color": "#3584e4", "--fa-secondary-color": "#3584e4",}} />
           </NavLink>
         </li>
       </ul>

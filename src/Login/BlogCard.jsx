@@ -10,8 +10,8 @@ import {
 export function BlogCard() {
   return (
     <Card
-      className="mt-6 w-96"
-      style={{ marginTop: "400px", marginBottom: "200px" }}
+      
+      style={{ marginTop: "100px", marginBottom: "200px" }}
     >
       <CardHeader color="blue-gray" className="relative h-56">
         <img

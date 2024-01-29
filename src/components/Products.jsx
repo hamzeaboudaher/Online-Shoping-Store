@@ -97,7 +97,7 @@ function Products() {
             <img
               src={item.image}
               alt={item.title}
-              className="w-full h-32 object-cover mb-4 rounded-md"
+              className="w-full h-80 object-cover mb-4 rounded-md"
             />
             <h3 className="text-lg font-bold mb-2">{item.title}</h3>
             <p className="text-gray-600 max-h-20 overflow-hidden">
