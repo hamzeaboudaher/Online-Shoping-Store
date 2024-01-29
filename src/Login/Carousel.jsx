@@ -1,4 +1,3 @@
-import React from "react";
 import { Carousel, IconButton } from "@material-tailwind/react";
 import { useContext } from "react";
 import ShopData from "../Context-Api-Reducer/Context";
@@ -13,7 +12,10 @@ export default function CarouselImage() {
         Welcome to OnlineShop
       </h1>
       <Carousel
-        style={{ marginTop: "200px", border: "2 px solid grey" }}
+        style={{
+          marginTop: "200px",
+          border: "2 px solid grey",
+        }}
         className="rounded-xl"
         prevArrow={({ handlePrev }) => (
           <IconButton
@@ -65,8 +67,9 @@ export default function CarouselImage() {
         )}
       >
         {firstThreeItems.map((item) => (
-          <div style={{ width: "300px" }} key={item.id} className="w-full">
+          <div style={{ width: "250px" }} key={item.id} className="w-full">
             <img
+              style={{ backgroundColor: " rgb(51 65 85)" }}
               src={item.image} // Hier wird die Bild-URL verwendet
               alt={item.title} // Alternativer Text
               className="h-full w-full object-cover"

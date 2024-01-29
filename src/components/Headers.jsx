@@ -49,33 +49,20 @@ function Headers() {
               </NavLink>
             </li>
           </ul>
-          <ul>
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  `${isActive ? "text-blue-900" : "text-blue-400"}`
-                }
-                to="/slider"
-              >
-                Slider
-              </NavLink>
-            </li>
-          </ul>
-       
         </nav>
       </div>
       <ul>
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  `${isActive ? "text-blue-900" : "text-blue-400"}`
-                }
-                to="/login"
-              >
-              Login    
-                        </NavLink>
-            </li>
-          </ul>
+        <li>
+          <NavLink
+            className={({ isActive }) =>
+              `${isActive ? "text-blue-900" : "text-blue-400"}`
+            }
+            to="/login"
+          >
+            Login
+          </NavLink>
+        </li>
+      </ul>
     </>
   );
 }
