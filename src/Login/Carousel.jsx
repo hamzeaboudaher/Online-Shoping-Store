@@ -81,7 +81,11 @@ export default function CarouselImage() {
         )}
       >
         {firstThreeItems.map((item) => (
-          <div  key={item.id} className="w-full scroll-smooth  animate-bounce">
+          <div
+            key={item.id}
+            className="w-full scroll-smooth  animate-bounce"
+            speed={6000}
+          >
             <img
               style={{ backgroundColor: " rgb(51 65 85)" }}
               src={item.image} // Hier wird die Bild-URL verwendet

@@ -13,6 +13,7 @@ import { initState, reducer } from "./Context-Api-Reducer/Usereducer";
 import { useEffect, useReducer, useState } from "react";
 import ShopData from "./Context-Api-Reducer/Context";
 import Login from "./Login/Login";
+
 function App() {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -21,6 +22,7 @@ function App() {
       .then((dat) => setData(dat))
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
+
   const [state, dispatch] = useReducer(reducer, initState);
   const addToBasket = (product) => {
     const existingProductIndex = state.products.findIndex(
