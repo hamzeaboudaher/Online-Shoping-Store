@@ -23,6 +23,11 @@ function App() {
 
 
 const [state, dispatch]=useReducer(reducer, initState)
+
+
+
+
+
 const addToBasket = (product) => {
   const existingProductIndex = state.products.findIndex((p) => p.id === product.id);
 
@@ -36,6 +41,8 @@ const addToBasket = (product) => {
     updatePriceF([...state.products, { ...product, quantity: 1 }]);
   }
 };
+
+
 
 
 const updateQuantity = (product, newQuantity) => {

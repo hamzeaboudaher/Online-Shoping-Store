@@ -1,28 +1,9 @@
 import back from "./assets/left-arrow.svg";
 import next from "./assets/next-arrows.svg";
 import "./Login/Login.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-function App() {
-  const [data, setData] = useState([]);
 
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
-
-  const imageUrls = data.map((item) => item.image);
-
-  return (
-    <div style={{ width: "500px", height: "400px" }}>
-      <Slider imagesArray={imageUrls} />
-    </div>
-  );
-}
 
 function Slider({ imagesArray }) {
   const [activeImage, setActiveImage] = useState(0);
@@ -73,4 +54,4 @@ function Slider({ imagesArray }) {
   );
 }
 
-export default App;
+export default Slider;

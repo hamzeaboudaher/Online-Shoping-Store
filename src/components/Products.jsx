@@ -5,6 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 function Products() {
+  const { data, addToBasket } = useContext(ShopData);
+
+  const [priceRange, setPriceRange] = useState("");
+
+  const { categoryid } = useParams();
 
   const containerRef = useRef(null);
 
@@ -31,11 +36,10 @@ function Products() {
   };
 
   
-  const { categoryid } = useParams();
-  const { data, addToBasket } = useContext(ShopData);
-  const [priceRange, setPriceRange] = useState("");
+ 
 
   {/* Price und Category filter */}
+
   const filteredData = data
     .filter((item) => !categoryid || item.category === categoryid)
     .filter((item) => {
