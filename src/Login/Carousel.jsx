@@ -5,7 +5,7 @@ import "../App.css";
 
 export default function CarouselImage() {
   const { data } = useContext(ShopData);
-  const firstThreeItems = data.slice(0, 15);
+  const firstThreeItems = data.slice(0, 9);
 
   return (
     <>
@@ -81,7 +81,7 @@ export default function CarouselImage() {
         )}
       >
         {firstThreeItems.map((item) => (
-          <div style={{ width: "250px" }} key={item.id} className="w-full">
+          <div  key={item.id} className="w-full scroll-smooth  animate-bounce">
             <img
               style={{ backgroundColor: " rgb(51 65 85)" }}
               src={item.image} // Hier wird die Bild-URL verwendet

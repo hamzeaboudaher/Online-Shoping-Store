@@ -29,9 +29,7 @@ export function BlogCard() {
           dolore magna aliquyam erat, sed diam voluptua.
         </Typography>
       </CardBody>
-      <CardFooter className="pt-0">
-        <Button>Read More</Button>
-      </CardFooter>
+      <CardFooter className="pt-0"></CardFooter>
     </Card>
   );
 }

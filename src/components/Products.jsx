@@ -5,6 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 function Products() {
+  const { data, addToBasket } = useContext(ShopData);
+
+  const [priceRange, setPriceRange] = useState("");
+
+  const { categoryid } = useParams();
 
   const containerRef = useRef(null);
 
@@ -31,11 +36,10 @@ function Products() {
   };
 
   
-  const { categoryid } = useParams();
-  const { data, addToBasket } = useContext(ShopData);
-  const [priceRange, setPriceRange] = useState("");
+ 
 
   {/* Price und Category filter */}
+
   const filteredData = data
     .filter((item) => !categoryid || item.category === categoryid)
     .filter((item) => {
@@ -56,20 +60,19 @@ function Products() {
 
   return (
     <>
-      <div className="border-black border-hidden border-2 text-red-500 text-xl   ">
-        <nav>
+      <div className="border-black border-hidden border-2 text-red-500 text-l   ">
+       
           {uniqueCategories.map((uniqueCategory) => (
             <Link
               key={uniqueCategory}
-              className={`text-red mr-5 hover:bg-orange-200 ${
-                categoryid === uniqueCategory ? "font-bold" : ""
+              className={`mr-5 text-black font-bold hover:text-blue-700  
               }`}
               to={`/products/${uniqueCategory}`}
             >
               {uniqueCategory}
             </Link>
           ))}
-        </nav>
+     
       </div>
 
 
