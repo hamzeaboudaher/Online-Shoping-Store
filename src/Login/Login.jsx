@@ -1,21 +1,4 @@
-import { useState } from "react";
-
-export default function Login() {
-  const [data, setData] = useState({
-    userName: "",
-    password: "",
-  });
-
-  const handleInputChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   console.log(data);
-  // };
-
+const Login = () => {
   return (
     <div className=" h-screen flex items-center justify-center">
       <div className="bg-white p-8 rounded shadow-md w-96">
@@ -23,7 +6,10 @@ export default function Login() {
 
         {/* Username Input */}
         <div className="mb-4">
-          <label htmlFor="username" className="block text-gray-600 text-sm font-medium mb-2">
+          <label
+            htmlFor="username"
+            className="block text-gray-600 text-sm font-medium mb-2"
+          >
             Username
           </label>
           <input
@@ -37,7 +23,10 @@ export default function Login() {
 
         {/* Password Input */}
         <div className="mb-6">
-          <label htmlFor="password" className="block text-gray-600 text-sm font-medium mb-2">
+          <label
+            htmlFor="password"
+            className="block text-gray-600 text-sm font-medium mb-2"
+          >
             Password
           </label>
           <input
@@ -49,9 +38,7 @@ export default function Login() {
         </div>
 
         {/* Login Button */}
-        <button
-          className="w-full bg-blue-500 text-white p-3 rounded focus:outline-none hover:bg-blue-600"
-        >
+        <button className="w-full bg-blue-500 text-white p-3 rounded focus:outline-none hover:bg-blue-600">
           Login
         </button>
       </div>
