@@ -66,6 +66,8 @@ function App() {
     }, 0);
     dispatch({ type: "UpdatePrice", payload: totalPrice });
   };
+
+  console.log(data)
   const values = {
     data,
     addToBasket,
@@ -75,6 +77,9 @@ function App() {
     products: state.products,
     totalPrice: state.totalPrice,
   };
+
+
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Layout />}>
